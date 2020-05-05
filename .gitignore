@@ -1,1 +1,1 @@
-/out/
+git rm -r --cached .idea
