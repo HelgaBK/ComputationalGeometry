@@ -5,6 +5,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Task {
@@ -28,6 +29,16 @@ public class Task {
         for(Point2D point : shape){
             DrawPoint(point, Color.DARKRED, 5);
         }
+        shape.add(new Point2D(shape.get(0).getX(), shape.get(0).getY()));
+        //Casteljo(shape);
+        List<Float> shapeFloat = new ArrayList<>();
+        for (Point2D p : shape) {
+            shapeFloat.add((float) p.getX());
+            shapeFloat.add((float) p.getY());
+        }
+        Spline.drawSpline(shapeFloat, 0.33f, true);
+
+
     }
 
     private void DrawPoint(Point2D point, Color color, int radius) {
