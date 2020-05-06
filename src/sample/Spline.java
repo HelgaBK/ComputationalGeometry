@@ -59,7 +59,8 @@ public class Spline {
                 arrPoints.add(sp);
                 arrPoints.add(sk);
                 Casteljo(arrPoints);
-
+                fpl.add(fp);
+                fpl.add(sp);
             }
 
         }
