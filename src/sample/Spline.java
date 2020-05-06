@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.geometry.Point2D;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +25,46 @@ public class Spline {
         a.add(p2y);
         return a;
     }
-    public static void drawSpline(List<Float> shapeFloat, float v, boolean b) {
+    public static void drawSpline(List<Float> pts, float t, boolean closed) {
+        List<Point2D> fpl = new ArrayList<>();
+        List<Point2D> spl = new ArrayList<>();
+        List<Float> cp = new ArrayList<>();  
+        int n = pts.size() - 1;
 
+        if (closed) {
+            pts.add(pts.get(0));
+            pts.add(pts.get(1));
+            pts.add(pts.get(2));
+            pts.add(pts.get(3));
+
+            pts.add(0, pts.get(n - 1));
+            pts.add(0, pts.get(n - 1));
+            for (var i = 0; i < n; i += 2) {
+                List<Float> temp = new ArrayList<>(getControlPoints(pts.get(i), pts.get(i + 1), pts.get(i + 2), pts.get(i + 3), pts.get(i + 4), pts.get(i + 5), t));
+
+                cp.addAll(temp);
+            }
+            cp.add(cp.get(0));
+            cp.add(cp.get(1));
+
+
+            for (var i = 2; i < n + 1; i += 2) {
+                Point2D fp = new Point2D(cp.get(2 * i - 2), cp.get(2 * i - 1));
+                Point2D sp = new Point2D(cp.get(2 * i), cp.get(2 * i + 1));
+                Point2D fk = new Point2D(pts.get(i), pts.get(i + 1));
+                Point2D sk = new Point2D(pts.get(i + 2), pts.get(i + 3));
+                ArrayList<Point2D> arrPoints = new ArrayList<>();
+                arrPoints.add(fk);
+                arrPoints.add(fp);
+                arrPoints.add(sp);
+                arrPoints.add(sk);
+                Casteljo(arrPoints);
+
+            }
+
+        }
+    }
+
+    private static void Casteljo(ArrayList<Point2D> arrPoints) {
     }
 }
