@@ -103,8 +103,16 @@ public class Task {
             return p;
     }
 
+    private double CosBetweenVectors(Point2D a, Point2D b, Point2D c, Point2D d){
+        Point2D x = new Point2D(b.getX() - a.getX(), b.getY() - a.getY());
+        Point2D y = new Point2D(d.getX() - c.getX(), d.getY() - c.getY());
+        double m = x.getX() * y.getX() + x.getY() * y.getY();
+        double n = Math.sqrt(Math.pow(x.getX(), 2) + Math.pow(x.getY(), 2)) * Math.sqrt(Math.pow(y.getX(), 2) + Math.pow(y.getY(), 2));
+        return ((m * 1000) / n);
+    }
+
     private List<Point2D> JarvisAlgorithm(List<Point2D> points) {
-        
+
     }
 
 
