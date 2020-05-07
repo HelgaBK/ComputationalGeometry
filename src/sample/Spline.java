@@ -83,8 +83,9 @@ public class Spline {
                         check = false;
                         Task.DrawPoint(p, Color.RED, 1);
                     }
-
+                    newPoints.set(j -1, p);
                 }
+                newPoints.remove(newPoints.size() - 1);
             }
         }
     }
