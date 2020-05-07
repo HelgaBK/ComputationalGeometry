@@ -1,9 +1,10 @@
 package sample;
 
 import javafx.geometry.Point2D;
-
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.paint.Color;
+
 
 public class Spline {
     public static List<Float> getControlPoints(float x0, float y0, float x1, float y1, float x2, float y2, float t) {
@@ -67,5 +68,24 @@ public class Spline {
     }
 
     private static void Casteljo(ArrayList<Point2D> arrPoints) {
+        for(int i = 1; i <1000; i++){
+            ArrayList<Point2D> newPoints = new ArrayList<>();
+            for(Point2D p : arrPoints){
+                newPoints.add(new Point2D(p.getX(), p.getY()));
+            }
+            boolean check = true;
+            while (check){
+                for(int j = 1; j < newPoints.size(); j++){
+                    double disX = (newPoints.get(j).getX() - newPoints.get(j - 1).getX()) / 1000 * i;
+                    double disY = (newPoints.get(j).getY() - newPoints.get(j - 1).getY()) / 1000 * i;
+                    Point2D p = new Point2D(newPoints.get(j-1).getX() + disX, newPoints.get(j-1).getY() + disY);
+                    if (newPoints.size() == 2){
+                        check = false;
+                        Task.DrawPoint(p, Color.RED, 1);
+                    }
+
+                }
+            }
+        }
     }
 }

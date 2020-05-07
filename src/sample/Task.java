@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Task {
+public class Task<puclic> {
     static final int HEIGHT = 700;
     static final int WIDTH = 1300;
     static final int BORDER_DISTANCE_H = 300;
@@ -23,6 +23,7 @@ public class Task {
     public Task() {
         this.Setup();
     }
+
 
     public void Setup(){
     item_group = new Group();
@@ -84,7 +85,7 @@ public class Task {
         }
     }
 
-    private void DrawPoint(Point2D point, Color color, int radius) {
+     static void DrawPoint(Point2D point, Color color, int radius) {
         Circle circle = new Circle(radius);
         circle.setFill(color);
         circle.setTranslateX(point.getX());
